@@ -30,7 +30,11 @@ function SignInwithGoogle() {
         style={{ display: "flex", justifyContent: "center", cursor: "pointer" }}
         onClick={googleLogin}
       >
-        <img src={require("../google.png")} width={"60%"} />
+        <img
+          className="googleImg"
+          src={require("../google.png")}
+          width={"20%"}
+        />
       </div>
     </div>
   );

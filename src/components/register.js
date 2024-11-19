@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 function Register() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+  const [rname, setRname] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
@@ -23,6 +24,7 @@ function Register() {
           email: user.email,
           firstName: fname,
           lastName: lname,
+          reportName: rname,
           photo: "",
         });
       }
@@ -74,7 +76,16 @@ function Register() {
           required
         />
       </div>
-
+      <div className="mb-3">
+        <label>Report Name</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Report Name"
+          onChange={(e) => setRname(e.target.value)}
+          required
+        />
+      </div>
       <div className="mb-3">
         <label>Password</label>
         <input
@@ -88,7 +99,7 @@ function Register() {
 
       <div className="d-grid">
         <button type="submit" className="btn btn-primary">
-          Sign Up
+          Sign Up <a href="/login"></a>
         </button>
       </div>
       <p className="forgot-password text-right">

@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
+import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
+import PowerBIEmbedComponent from "./PowerBIEmbedComponent";
+import "./../index.css";
 
 function Profile() {
   const [userDetails, setUserDetails] = useState(null);
+
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
-      console.log(user);
-
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setUserDetails(docSnap.data());
-        console.log(docSnap.data());
-      } else {
-        console.log("User is not logged in");
+      if (user) {
+        const docRef = doc(db, "Users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserDetails(docSnap.data());
+        } else {
+          console.log("User is not logged in");
+        }
       }
     });
   };
+
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -31,31 +35,44 @@ function Profile() {
       console.error("Error logging out:", error.message);
     }
   }
+
   return (
+    // <div>
+    //   <iframe
+    //     className="reports"
+    //     title="dummy_report"
+    //     src={userDetails.reportName}
+    //     frameborder="0"
+    //     allowFullScreen="true"
+    //   ></iframe>
+    //   <Button variant="primary" onClick={handleLogout} className="mt-3">
+    //     Logout
+    //   </Button>
+    // </div>
     <div>
+      {/* <Info></Info> */}
       {userDetails ? (
-        <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <img
-              src={userDetails.photo}
-              width={"40%"}
-              style={{ borderRadius: "50%" }}
-            />
-          </div>
-          <h3>Welcome {userDetails.firstName} 🙏🙏</h3>
-          <div>
-            <p>Email: {userDetails.email}</p>
-            <p>First Name: {userDetails.firstName}</p>
-            <p>Last Name: {userDetails.lastName}</p>
-          </div>
-          <button className="btn btn-primary" onClick={handleLogout}>
+        <div>
+          <iframe
+            className="reports"
+            // title="dummy_report"
+            src={userDetails.reportName}
+            frameborder="0"
+            allowFullScreen="true"
+          ></iframe>
+          <Button variant="primary" onClick={handleLogout} className="mt-3">
             Logout
-          </button>
-        </>
+          </Button>
+        </div>
       ) : (
-        <p>Loading...</p>
+        <Row className="justify-content-center">
+          <Col xs="auto">
+            <Spinner animation="border" />
+          </Col>
+        </Row>
       )}
     </div>
   );
 }
+
 export default Profile;
