@@ -32,4 +32,3 @@ const MyNavbar = () => {
 };
 
 export default MyNavbar;
-// cdcd8bca-ce9a-499f-ba25-ed89e71df433

@@ -13,7 +13,7 @@ import PowerBIEmbedComponent from "./components/PowerBIEmbedComponent";
 import SignUp from "./components/register";
 import Profile from "./components/profile";
 import HomePage from "./components/homePage";
-import Navbar from "./components/navbar"; // Import the Navbar component
+import MyNavbar from "./components/navbar"; // Import the Navbar component
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -31,28 +31,27 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* Navbar component included here */}
-        <Navbar />
+        {/* Conditionally render Navbar only if the user is not logged in */}
+        {!user && <MyNavbar />}
         <Routes>{/* Route for Info outside the wrapper */}</Routes>
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Routes>
-              {/* Set Home component as the default page */}
-              <Route path="/" element={<HomePage />} />
+        <div>
+          {/* <div className="auth-inner"> */}
+          <Routes>
+            {/* Set Home component as the default page */}
+            <Route path="/" element={<HomePage />} />
 
-              {/* Other routes */}
-              <Route
-                path="/login"
-                element={user ? <Navigate to="/profile" /> : <Login />}
-              />
-              <Route path="/register" element={<SignUp />} />
-
-              <Route path="/profile" element={<Profile />} />
-            </Routes>
-            <ToastContainer />
-          </div>
+            {/* Other routes */}
+            <Route
+              path="/login"
+              element={user ? <Navigate to="/profile" /> : <Login />}
+            />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+          <ToastContainer />
         </div>
       </div>
+      {/* </div> */}
     </Router>
   );
 }

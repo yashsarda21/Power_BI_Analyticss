@@ -53,6 +53,7 @@ function Profile() {
       {/* <Info></Info> */}
       {userDetails ? (
         <div>
+          <h1 className="userName">{userDetails.firstName} DashBoard</h1>
           <iframe
             className="reports"
             // title="dummy_report"

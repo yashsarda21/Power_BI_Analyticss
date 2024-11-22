@@ -35,6 +35,8 @@ body, html, .App, #root, .auth-wrapper {
   width: 100%;
   max-width: 90%;
   margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
   background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
@@ -101,9 +103,9 @@ body, html, .App, #root, .auth-wrapper {
   width: 25%;
 }
 @media (max-width: 768px) {
-  .auth-inner {
+  /* .auth-inner {
     padding: 30px 25px;
-  }
+  } */
 
   .googleImg{
     width: 45%;
@@ -115,10 +117,10 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 @media (max-width: 450px) {
-  .auth-inner {
+  /* .auth-inner {
     width: 90%;
     padding: 20px;
-  }
+  } */
 
   .iframe-container {
     padding-bottom: 75%; /* Ensure the iframe stays responsive */
@@ -132,11 +134,11 @@ body, html, .App, #root, .auth-wrapper {
 
 .reports{
   width: 1200px;
-  height: 400px;
+  height: 500px;
 }
 
 @media (max-width: 1400px) {
-
+  
   .reports{
     width: 1100px;
   }
@@ -179,3 +181,138 @@ button.mt-3 {
   margin: 20px auto; /* Centers the button horizontally */
   text-align: center; /* Ensures the button's text is centered */
 }
+
+.userName{
+  display: block;
+  padding-top: 50px; /* Centers the button horizontally */
+  text-align: center;
+}
+
+.aboutUsHeaderName{
+  display: block;
+  padding-top: 50px; /* Centers the button horizontally */
+  text-align: center;
+}
+
+.homepageContainer{
+  height: auto;
+  width: auto;
+}
+
+
+
+/* HOW IT WORKS */
+
+/* Container Styles */
+.container {
+  max-width: 120rem;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
+
+/* Grid Styles */
+.grid {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 3rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: 1fr; /* Default single-column layout for mobile */
+}
+
+/* Center Vertically */
+.grid--center-v {
+  align-items: center;
+}
+
+/* Section Styles */
+.section-how {
+  padding: 4.8rem 0;
+}
+
+/* Step Text Styles */
+.step-number {
+  font-size: 1.8rem; /* Adjust for smaller screens */
+  margin-bottom: 0.8rem;
+}
+
+.heading-tertiary {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.step-description {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Step Image Box Styles */
+.step-img-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.step-img-box::before,
+.step-img-box::after {
+  content: "";
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.step-img-box::before {
+  width: 50%;
+  padding-bottom: 50%;
+  background-color: #fdf2e9;
+  z-index: -2;
+}
+
+.step-img-box::after {
+  width: 40%;
+  padding-bottom: 40%;
+  background-color: #fae5d3;
+  z-index: -1;
+}
+
+.step-img {
+  width: 60%;
+}
+
+/* Responsive for Larger Screens (Tablet and Above) */
+@media (min-width: 768px) {
+  .grid--2-cols {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for tablets and above */
+  }
+}
+
+@media (min-width: 1024px) {
+  .step-number {
+    font-size: 3rem;
+  }
+
+  .step-description {
+    font-size: 1rem;
+  }
+
+  .step-img-box::before {
+    width: 60%;
+    padding-bottom: 60%;
+  }
+
+  .step-img-box::after {
+    width: 45%;
+    padding-bottom: 45%;
+  }
+
+  .step-img {
+    width: 35%;
+  }
+}
+
