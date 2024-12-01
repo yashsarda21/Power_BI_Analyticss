@@ -3,10 +3,12 @@ import { auth, db } from "./firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import PowerBIEmbedComponent from "./PowerBIEmbedComponent";
+import Register from "./register"; // Assuming this is your Register component
 import "./../index.css";
 
 function Profile() {
   const [userDetails, setUserDetails] = useState(null);
+  const [isSpecialUser, setIsSpecialUser] = useState(false);
 
   const fetchUserData = async () => {
     auth.onAuthStateChanged(async (user) => {
@@ -14,9 +16,18 @@ function Profile() {
         const docRef = doc(db, "Users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setUserDetails(docSnap.data());
+          const data = docSnap.data();
+          setUserDetails(data);
+
+          // Check if the user is a special user
+          if (
+            user.email === "yashsarda2002@gmail.com" ||
+            user.email === "sarveshtoshniwal@gmail.com"
+          ) {
+            setIsSpecialUser(true);
+          }
         } else {
-          console.log("User is not logged in");
+          console.log("User document does not exist.");
         }
       }
     });
@@ -37,34 +48,25 @@ function Profile() {
   }
 
   return (
-    // <div>
-    //   <iframe
-    //     className="reports"
-    //     title="dummy_report"
-    //     src={userDetails.reportName}
-    //     frameborder="0"
-    //     allowFullScreen="true"
-    //   ></iframe>
-    //   <Button variant="primary" onClick={handleLogout} className="mt-3">
-    //     Logout
-    //   </Button>
-    // </div>
     <div>
-      {/* <Info></Info> */}
       {userDetails ? (
-        <div>
-          <h1 className="userName">{userDetails.firstName} DashBoard</h1>
-          <iframe
-            className="reports"
-            // title="dummy_report"
-            src={userDetails.reportName}
-            frameborder="0"
-            allowFullScreen="true"
-          ></iframe>
-          <Button variant="primary" onClick={handleLogout} className="mt-3">
-            Logout
-          </Button>
-        </div>
+        isSpecialUser ? (
+          <Register />
+        ) : (
+          <div>
+            <h1 className="userName">{userDetails.firstName} DashBoard</h1>
+            <iframe
+              className="reports"
+              src={userDetails.reportName}
+              frameBorder="0"
+              allowFullScreen="true"
+            ></iframe>
+            {/* <PowerBIEmbedComponent></PowerBIEmbedComponent> */}
+            {/* <Button variant="primary" onClick={handleLogout} className="mt-3">
+              Logout
+            </Button> */}
+          </div>
+        )
       ) : (
         <Row className="justify-content-center">
           <Col xs="auto">
@@ -72,6 +74,9 @@ function Profile() {
           </Col>
         </Row>
       )}
+      <Button variant="primary" onClick={handleLogout} className="mt-3">
+        Logout
+      </Button>
     </div>
   );
 }

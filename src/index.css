@@ -316,3 +316,29 @@ button.mt-3 {
   }
 }
 
+
+.Embed-container {
+  width: 100%;
+  height: 100%;
+  border: none; /* No borders for full-page experience */
+}
+
+@media (max-width: 768px) {
+  /* Adjustments for tablets or smaller screens */
+  .Embed-container {
+    height: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjustments for mobile devices */
+  .Embed-container {
+    height: 100%;
+  }
+}
+
+/* .PowerBIEmbedBox{
+  width: "100vw";
+  height: "100vh";
+  margin: auto;
+} */

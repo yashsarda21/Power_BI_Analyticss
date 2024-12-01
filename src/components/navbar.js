@@ -32,3 +32,8 @@ const MyNavbar = () => {
 };
 
 export default MyNavbar;
+{
+  /* <Link to="/login">
+            <Button variant="outline-primary">Login</Button>
+          </Link> */
+}
