@@ -21,3 +21,9 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const db = getFirestore(app);
 export default app;
+
+// application id - d9c37521-6dcb-4663-9a46-6df11c7ad31e
+// tenent id - 32753c89-c3e7-47f1-84a3-f991463588c5
+
+// vlaue -uEz8Q~nJwWRmcakGz1BGSC6wuwyrBmWtxtieNdxv
+// secreat id c26f819f-cdbe-402b-be9c-d18dcb7bbe57

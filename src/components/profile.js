@@ -55,13 +55,12 @@ function Profile() {
         ) : (
           <div>
             <h1 className="userName">{userDetails.firstName} DashBoard</h1>
-            <iframe
+            {/* <iframe
               className="reports"
               src={userDetails.reportName}
-              frameBorder="0"
               allowFullScreen="true"
-            ></iframe>
-            {/* <PowerBIEmbedComponent></PowerBIEmbedComponent> */}
+            ></iframe> */}
+            <PowerBIEmbedComponent></PowerBIEmbedComponent>
             {/* <Button variant="primary" onClick={handleLogout} className="mt-3">
               Logout
             </Button> */}
