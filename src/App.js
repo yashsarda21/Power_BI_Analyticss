@@ -32,7 +32,7 @@ function App() {
     <Router>
       <div className="App">
         {/* Conditionally render Navbar only if the user is not logged in */}
-        {!user && <MyNavbar />}
+        {<MyNavbar />}
         <Routes>{/* Route for Info outside the wrapper */}</Routes>
         <div>
           {/* <div className="auth-inner"> */}

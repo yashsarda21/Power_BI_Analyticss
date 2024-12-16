@@ -134,7 +134,7 @@ body, html, .App, #root, .auth-wrapper {
 
 .reports{
   width: 1200px;
-  height: 500px;
+  height: 800px;
 }
 
 @media (max-width: 1400px) {
